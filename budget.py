@@ -8,16 +8,14 @@ class Category:
         self.printout += self.title
 
     def __str__(self):
+        total = "Total: " + str(self.get_balance())
         for item in self.ledger:
             description = self.ledger[self.ledger.index(item)]["description"]
-            amount = self.ledger[self.ledger.index(item)]["amount"]
+            amount = format(self.ledger[self.ledger.index(item)]["amount"], ".2f")
             item_line = ""
-            if len(description) > 23:
-                item_line = description[0:23] +  (30 - 23 - len(str(amount))) *" " +str(amount) + "\n"
-                self.printout += item_line
-            else:
-                item_line = description +  (30 - len(description) - len(str(amount))) *" " +str(amount) + "\n"
-                self.printout += item_line            
+            item_line = description[0:23] +  (30 - len(description[0:23]) - len(amount)) *" " + amount[0:7] + "\n"
+            self.printout += item_line      
+        self.printout += total
         return(self.printout)
 
     def deposit(self, amount, description=''):
