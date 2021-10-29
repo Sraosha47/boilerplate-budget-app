@@ -10,9 +10,7 @@ class Category:
     def __str__(self):
         for item in self.ledger:
             description = self.ledger[self.ledger.index(item)]["description"]
-            print("description: " + description + "\n")
             amount = self.ledger[self.ledger.index(item)]["amount"]
-            print("amount: "+ str(amount) + "\n")
             item_line = ""
             if len(description) > 23:
                 item_line = description[0:23] +  (30 - 23 - len(str(amount))) *" " +str(amount) + "\n"
