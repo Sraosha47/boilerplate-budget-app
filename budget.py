@@ -42,8 +42,8 @@ class Category:
         if self.check_funds(amount) == False:
             return(False)
         else:
-            self.withdraw(amount)
-            category.deposit(amount)
+            self.withdraw(amount, ("Transfer to " + category.category))
+            category.deposit(amount, ("Transfer from " + self.category))
             return(True)
     
     def check_funds(self, amount):
@@ -52,4 +52,15 @@ class Category:
         else:
             return(True)
 
-#def create_spend_chart(categories):
+def create_spend_chart(categories):
+    wd_list = []
+    wd_total = 0
+    for category in categories:
+        wd_cat = 0
+        for item in category.ledger:
+            if category.ledger[category.ledger.index(item)]["amount"] < 0:
+                wd_cat += category.ledger[category.ledger.index(item)]["amount"] 
+                wd_list.append({"Category": category.category, "wd": wd_cat})
+                wd_total += wd_cat
+    print("Withdrawal List:", wd_list)
+    print("Total Withdrawal: " + str(wd_total))
