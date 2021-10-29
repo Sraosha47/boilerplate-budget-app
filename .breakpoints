@@ -1,5 +1,13 @@
 {
   "files": {
+    "budget.py": [
+      {
+        "id": "077594de-c732-406b-8523-b338372d78e1",
+        "line": 10,
+        "version": 87,
+        "index": 301
+      }
+    ],
     "test_module.py": [
       {
         "id": "e92d8947-6df1-4791-9a7a-cc65c9dcdccc",
